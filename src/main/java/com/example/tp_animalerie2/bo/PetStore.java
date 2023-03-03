@@ -26,10 +26,20 @@ public class PetStore {
         animals = new HashSet<>();
     }
 
-    public PetStore(String name, String managerName) {
+
+    @OneToOne
+    private Adresse adresse;
+    /*public PetStore(String name, String managerName) {
         this.name = name;
         this.managerName = managerName;
-    }
+    }*/
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable( name = "Compo",
+            joinColumns = @JoinColumn( name = "ID_PETS", referencedColumnName = "ID" ),
+            inverseJoinColumns = @JoinColumn( name = "ID_PROD", referencedColumnName = "ID" ) )
+    Set<Product> products;
+
 
     public PetStore(String name, String managerName, Set<Animal> animals) {
         this.name = name;
@@ -37,6 +47,34 @@ public class PetStore {
         this.animals = animals;
     }
 
+    public PetStore(String name, String managerName,Adresse adresse, Set<Product> products) {
+        this.name = name;
+        this.managerName = managerName;
+        this.adresse = adresse;
+        this.products = products;
+    }
+
+    public PetStore(String name, String managerName, Adresse adresse) {
+        this.name = name;
+        this.managerName = managerName;
+        this.adresse = adresse;
+    }
+
     public PetStore() {
+    }
+
+    public PetStore(String name, String managerName) {
+        this.name = name;
+        this.managerName = managerName;
+    }
+
+    @Override
+    public String toString() {
+        return "PetStore{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", managerName='" + managerName + '\'' +
+                ", animals=" + animals +
+                '}';
     }
 }

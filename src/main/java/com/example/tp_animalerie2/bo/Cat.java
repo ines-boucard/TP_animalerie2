@@ -8,11 +8,19 @@ import java.time.LocalDate;
 @Entity
 public class Cat extends Animal{
 
-    @Column(name = "chilpld")
     private String chilpld;
 
     public Cat(LocalDate birth, String couleur, String chilpld) {
         super(birth, couleur);
+        this.chilpld = chilpld;
+    }
+
+    public Cat(LocalDate birth, String couleur, PetStore petStore, String chilpld) {
+        super(birth, couleur, petStore);
+        this.chilpld = chilpld;
+    }
+
+    public Cat(String chilpld) {
         this.chilpld = chilpld;
     }
 

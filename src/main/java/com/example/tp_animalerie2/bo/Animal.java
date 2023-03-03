@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "Animal")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Animal {
+public abstract class Animal {
     public Animal() {
     }
 
@@ -50,4 +50,19 @@ public class Animal {
     @JoinColumn( name = "ID_Petstore" )
     PetStore petStore;
 
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", birth=" + birth +
+                ", couleur='" + couleur + '\'' +
+                ", petStore=" + petStore +
+                '}';
+    }
+
+    public Animal(LocalDate birth, String couleur, PetStore petStore) {
+        this.birth = birth;
+        this.couleur = couleur;
+        this.petStore = petStore;
+    }
 }
