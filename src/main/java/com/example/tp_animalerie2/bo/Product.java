@@ -24,21 +24,6 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable( name = "Compo",
-            joinColumns = @JoinColumn( name = "ID_PROD", referencedColumnName = "ID" ),
-            inverseJoinColumns = @JoinColumn( name = "ID_PETS", referencedColumnName = "ID" ) )
-    Set<PetStore>  Petstores;
-
-    public Product(String code, String label, ProdType type, Double price, Set<PetStore> petstores) {
-        this.code = code;
-        this.label = label;
-        this.type = type;
-        this.price = price;
-        Petstores = petstores;
-    }
-
-
     public Product(String code, String label, ProdType type, Double price) {
         this.code = code;
         this.label = label;
@@ -49,10 +34,4 @@ public class Product {
     public Product() {
     }
 
-    public enum ProdTypeTest {
-        CREATED,
-        PROCESSING,
-        COMPLETED,
-        CANCELLED
-    }
 }

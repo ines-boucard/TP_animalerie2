@@ -21,14 +21,14 @@ public class Adresse {
     @Column(name = "city")
     private String city;
 
-    @OneToOne
-    private PetStore petStore;
 
-    public Adresse(String number, String street, String zipCode, String city, PetStore petStore) {
+    public Adresse(String number, String street, String zipCode, String city) {
         this.number = number;
         this.street = street;
         this.zipCode = zipCode;
         this.city = city;
-        this.petStore = petStore;
+    }
+
+    public Adresse() {
     }
 }
